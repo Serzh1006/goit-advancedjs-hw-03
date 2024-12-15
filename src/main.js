@@ -7,6 +7,11 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -29,18 +34,14 @@ form.addEventListener('submit', e => {
           position: 'bottomCenter',
         });
         gallery.innerHTML = '';
+        lightbox.refresh();
         form.reset();
         return;
       }
       const markup = renderBySearch(data.hits);
       gallery.innerHTML = markup;
+      lightbox.refresh();
       form.reset();
     })
     .catch(err => console.log(err));
-});
-
-let lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionPosition: 'bottom',
-  captionDelay: 250,
 });
