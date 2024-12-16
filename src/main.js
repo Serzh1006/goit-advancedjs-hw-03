@@ -7,6 +7,8 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
+const loader = document.querySelector('.loader');
+
 let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionPosition: 'bottom',
@@ -24,8 +26,10 @@ form.addEventListener('submit', e => {
     });
     return;
   }
+  loader.classList.remove('is-hidden');
   fetchByValue(textByUser.trim())
     .then(data => {
+      loader.classList.add('is-hidden');
       if (data.hits.length === 0) {
         iziToast.error({
           title: 'Error',

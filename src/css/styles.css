@@ -11,6 +11,10 @@ h6 {
   margin: 0;
 }
 
+body {
+  background-color: rgb(228, 255, 245);
+}
+
 ul,
 ol {
   list-style: none;
@@ -143,4 +147,41 @@ a {
 .btn-submit:hover,
 .btn-submit:focus {
   background-color: #6c8cff;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-width: 3px;
+  border-style: dashed solid solid dotted;
+  border-color: #ff3d00 #ff3d00 transparent #ff3d00;
+  border-radius: 50%;
+  display: block;
+  margin: 100px auto;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 20px;
+  top: 31px;
+  border: 10px solid transparent;
+  border-right-color: #ff3d00;
+  transform: rotate(-40deg);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.is-hidden {
+  display: none;
 }
